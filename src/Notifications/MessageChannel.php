@@ -51,9 +51,9 @@ abstract class MessageChannel {
 
         $client = new \GuzzleHttp\Client();
 
-        return $client->request('POST', 'https://conversations.messagebird.com/v1', [
+        return $client->request('POST', env('MESSAGEBIRD_API_CONVERSATIONS_URL'), [
             'headers' => [
-                'Authorization' => 'AccessKey '. config('messagebird.api.key'),
+                'Authorization' => 'AccessKey '. env('MESSAGEBIRD_API_KEY'),
                 'Content-Type' => 'application/json', 
                 'Accept' => 'application/json'
             ],

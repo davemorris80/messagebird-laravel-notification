@@ -78,11 +78,11 @@ If the recipient replies to your message, you can send them `Text` type messages
 
 This notifications package is built on top of [Nexmo/laravel-notification](https://github.com/Nexmo/laravel-notification) and I've adepted it for MessageBird purposes.
 
-For this to work, you need to set your application ID and path to your private key in the `.env` file:
+For this to work, you need to set your base API URL for the MessageBird Programmable Conversations API and the Access Key from your MessageBird developer dashboard in the `.env` file:
 
 ```
-MESSAGEBIRD_APPLICATION_ID=my_application_id
-MESSAGEBIRD_PRIVATE_KEY=./private.key
+MESSAGEBIRD_API_CONVERSATIONS_URL=api_url
+MESSAGEBIRD_ACCESS_KEY=my_api_key
 ```
 
 ### Setting the `from` address
