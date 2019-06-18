@@ -1,0 +1,27 @@
+{
+    "name": "messagebird/laravel-notification",
+    "description": "Send SMS, WhatsApp and Facebook Messenger messages via MessageBird",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dave Morris",
+            "email": "dave@justsogroup.co.uk"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MessageBird\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MessageBird\\Notifications\\MessageBirdChannelServiceProvider"
+            ]
+        }
+    }
+}
