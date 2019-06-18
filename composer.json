@@ -23,5 +23,6 @@
                 "MessageBird\\Notifications\\MessageBirdChannelServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
