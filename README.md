@@ -1,8 +1,6 @@
 # MessageBird / Laravel Notifications
 
-Although MessageBird is [built in to Laravel](https://laravel.com/docs/5.7/notifications#sms-notifications) as the default SMS provider, that is only a small portion of the available communication channels we offer.
-
-This package adds the ability to send notifications to WhatsApp, Facebook Messenger and Viber via MessageBird.
+This package adds the ability to send notifications to WhatsApp, Facebook Messenger and SMS via MessageBird as a valid Laravel Notification, making life easier to utilise notifications and queueing.
 
 ## Usage
 
@@ -10,7 +8,6 @@ To use this package, run `composer require messagebird/laravel-notification`. On
 
 * `toMessageBirdWhatsApp`
 * `toMessageBirdFacebook`
-* `toMessageBirdViberServiceMessage`
 * `toMessageBirdSms`
 
 See [examples/Notification/MerryChristmas.php](examples/Notification/MerryChristmas.php) for a complete example.
@@ -79,24 +76,24 @@ If the recipient replies to your message, you can send them `Text` type messages
 
 ### Authentication
 
-This notifications package is built on top of [messagebird/laravel](https://github.com/MessageBird/messagebird-laravel) and uses the MessageBird client from there.
+This notifications package is built on top of [Nexmo/laravel-notification](https://github.com/Nexmo/laravel-notification) and I've adepted it for MessageBird purposes.
 
 For this to work, you need to set your application ID and path to your private key in the `.env` file:
 
 ```
-NEXMO_APPLICATION_ID=my_application_id
-NEXMO_PRIVATE_KEY=./private.key
+MESSAGEBIRD_APPLICATION_ID=my_application_id
+MESSAGEBIRD_PRIVATE_KEY=./private.key
 ```
 
 ### Setting the `from` address
 
-You can set a `from `address via the `.env` file. This package will look for provider specific entries before falling back to `NEXMO_FROM`.
+You can set a `from `address via the `.env` file. This package will look for provider specific entries before falling back to `MESSAGEBIRD_FROM`.
 
 ```
-NEXMO_FROM_SMS=""
-NEXMO_FROM_WHATSAPP=""
-NEXMO_FROM_MESSENGER=""
-NEXMO_FROM="" # This is the default if any of the above aren't set
+MESSAGEBIRD_FROM_SMS=""
+MESSAGEBIRD_FROM_WHATSAPP=""
+MESSAGEBIRD_FROM_MESSENGER=""
+MESSAGEBIRD_FROM="" # This is the default if any of the above aren't set
 ```
 
 Alternatively, you can set a `from` address for a single notification by calling the `->from()` method on a message:
@@ -104,6 +101,6 @@ Alternatively, you can set a `from` address for a single notification by calling
 ```php
 public function toMessageBirdWhatsApp($notifiable)
 {
-    return (new Text)->content('Merry Christmas Viber!')->from("YOUR_ID");
+    return (new Text)->content('Merry Christmas!')->from("YOUR_ID");
 }
 ```
